@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block article %} Add a New Article {% endblock %}</h1>
+<form method="post">
+    <input type="text" style="display:table-cell; width:75%" name="article_url" placeholder="Article URL" value="{{ request.form['article_url'] }}"></input>
+    <br>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
