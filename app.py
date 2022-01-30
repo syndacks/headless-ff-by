@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, flash
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
+import os
 import time
 
 
@@ -28,8 +29,10 @@ def bypass():
                 flash('article url is required!')
             else:
                 try:
-                    bypass_paywall_xpi_path = "/Users/dacksmilliken/Downloads/bypass-paywalls-firefox.xpi"
-                    ublock_origin_xpi_path = "/Users/dacksmilliken/Downloads/ublock_origin-1.40.8-an+fx.xpi"
+                    dir_path = os.path.dirname(os.path.realpath(__file__))
+                    bypass_paywall_xpi_path = "{0}/xpis/bypass-paywalls-firefox.xpi".format(dir_path)
+                    ublock_origin_xpi_path = "{0}/xpis/ublock_origin-1.40.8-an+fx.xpi".format(dir_path)
+
 
                     firefox_options = Options()
                     firefox_options.add_argument("--headless")
