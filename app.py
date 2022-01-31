@@ -16,6 +16,13 @@ messages = [{'title': 'Message One',
             {'title': 'Message Two',
              'content': 'Message Two Content'}]
 
+def which(pgm):
+    path=os.getenv('PATH')
+    for p in path.split(os.path.pathsep):
+        p=os.path.join(p,pgm)
+        if os.path.exists(p) and os.access(p,os.X_OK):
+            return p
+
 @app.route('/')
 def index():
     return render_template('index.html', messages=messages)
@@ -36,7 +43,12 @@ def bypass():
 
                     firefox_options = Options()
                     firefox_options.add_argument("--headless")
-                    driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver', options=firefox_options)
+                    
+                    os.which=which
+                    geckodriver_path = which('geckodriver')
+
+                    # driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver', options=firefox_options)
+                    driver = webdriver.Firefox(executable_path=geckodriver_path, options=firefox_options)
 
                     driver.install_addon(bypass_paywall_xpi_path, temporary=True)
                     driver.install_addon(ublock_origin_xpi_path, temporary=True)
