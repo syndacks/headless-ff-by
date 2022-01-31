@@ -38,7 +38,11 @@ def bypass():
                 try:
                     dir_path = os.path.dirname(os.path.realpath(__file__))
                     bypass_paywall_xpi_path = "{0}/xpis/bypass-paywalls-firefox.xpi".format(dir_path)
+                    print("bypass_paywall_xpi_path: ", bypass_paywall_xpi_path)
+
                     ublock_origin_xpi_path = "{0}/xpis/ublock_origin-1.40.8-an+fx.xpi".format(dir_path)
+                    print("ublock_origin_xpi_path: ", ublock_origin_xpi_path)
+
 
 
                     firefox_options = Options()
