@@ -43,9 +43,11 @@ def bypass():
 
                     firefox_options = Options()
                     firefox_options.add_argument("--headless")
+                    print("1")
                     
                     os.which=which
                     geckodriver_path = which('geckodriver')
+                    print("geckodriver_path: ", geckodriver_path)
 
                     # driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver', options=firefox_options)
                     driver = webdriver.Firefox(executable_path=geckodriver_path, options=firefox_options)
