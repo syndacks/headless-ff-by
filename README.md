@@ -11,3 +11,6 @@ https://www.lambdatest.com/blog/adding-firefox-extensions-with-selenium-in-pytho
 
 Intalling Docker on Termux
 https://gist.github.com/oofnikj/e79aef095cd08756f7f26ed244355d62
+
+Installing Docker on a Rooted Device
+https://gist.github.com/FreddieOliveira/efe850df7ff3951cb62d74bd770dce27
