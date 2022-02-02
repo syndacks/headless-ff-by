@@ -1,5 +1,3 @@
-# inspired by https://www.lambdatest.com/blog/adding-firefox-extensions-with-selenium-in-python/
-
 from datetime import datetime
 from flask import Flask, render_template, request, flash
 from selenium import webdriver
@@ -16,11 +14,11 @@ messages = [{'title': 'Message One',
             {'title': 'Message Two',
              'content': 'Message Two Content'}]
 
-def which(pgm):
-    path=os.getenv('PATH')
+def _which(pgm):
+    path = os.getenv('PATH')
     for p in path.split(os.path.pathsep):
-        p=os.path.join(p,pgm)
-        if os.path.exists(p) and os.access(p,os.X_OK):
+        p = os.path.join(p, pgm)
+        if os.path.exists(p) and os.access(p, os.X_OK):
             return p
 
 @app.route('/')
@@ -38,20 +36,13 @@ def bypass():
                 try:
                     dir_path = os.getcwd()
                     bypass_paywall_xpi_path = "{0}/xpis/bypass-paywalls-firefox.xpi".format(dir_path)
-                    print("bypass_paywall_xpi_path: ", bypass_paywall_xpi_path)
-
                     ublock_origin_xpi_path = "{0}/xpis/ublock_origin-1.40.8-an+fx.xpi".format(dir_path)
-                    print("ublock_origin_xpi_path: ", ublock_origin_xpi_path)
 
                     firefox_options = Options()
                     firefox_options.add_argument("--headless")
-                    print("1")
 
-                    os.which=which
-                    geckodriver_path = which('geckodriver')
-                    print("geckodriver_path: ", geckodriver_path)
+                    geckodriver_path = _which('geckodriver')
 
-                    # driver = webdriver.Firefox(executable_path='/usr/local/bin/geckodriver', options=firefox_options)
                     driver = webdriver.Firefox(executable_path=geckodriver_path, options=firefox_options)
 
                     driver.install_addon(bypass_paywall_xpi_path, temporary=True)
