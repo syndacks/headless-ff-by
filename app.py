@@ -1,4 +1,3 @@
-from datetime import datetime
 from flask import Flask, render_template, request, flash
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -47,6 +46,7 @@ def bypass():
 
                     driver.install_addon(bypass_paywall_xpi_path, temporary=True)
                     driver.install_addon(ublock_origin_xpi_path, temporary=True)
+                    
                     time.sleep(1)
 
                     driver.get(article_url)
