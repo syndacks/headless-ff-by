@@ -36,19 +36,17 @@ def bypass():
                 flash('article url is required!')
             else:
                 try:
-                    dir_path = os.path.dirname(os.path.realpath(__file__))
+                    dir_path = os.getcwd()
                     bypass_paywall_xpi_path = "{0}/xpis/bypass-paywalls-firefox.xpi".format(dir_path)
                     print("bypass_paywall_xpi_path: ", bypass_paywall_xpi_path)
 
                     ublock_origin_xpi_path = "{0}/xpis/ublock_origin-1.40.8-an+fx.xpi".format(dir_path)
                     print("ublock_origin_xpi_path: ", ublock_origin_xpi_path)
 
-
-
                     firefox_options = Options()
                     firefox_options.add_argument("--headless")
                     print("1")
-                    
+
                     os.which=which
                     geckodriver_path = which('geckodriver')
                     print("geckodriver_path: ", geckodriver_path)
